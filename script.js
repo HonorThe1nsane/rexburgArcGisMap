@@ -24,17 +24,9 @@ require([
             }
         })
     });
-    const textSymbol = new TextSymbol({
-        text: place.name,
-        font: {
-            family: "Arial",
-            size: 16,
-            style: "italic"
-        },
-        color: "red"
-    });
 
-    const view = new SceneView({
+
+    const view = new SceneView({// Rexburg, Idaho
         container: "viewDiv",
         map: map,
         camera: {
@@ -45,44 +37,47 @@ require([
             },
             heading: 57.02,
             tilt: 56.97
-        } // Rexburg, Idaho
+        }
     });
 
-    // Places of interest with their coordinates and labels
-    const placesOfInterest = [
-        { name: "Legacy Flight Museum", longitude: -111.80683898925781, latitude: 43.83464431762695 },
-        { name: "Place 2", longitude: -111.790, latitude: 43.824 }
+    // // Places of interest with their coordinates and labels
+    // const placesOfInterest = [
+    //     { name: "Legacy Flight Museum", longitude: -111.80683898925781, latitude: 43.83464431762695 },
+    //     { name: "Museum of Rexburg", longitude: -111.78464, latitude: 43.82738 },
+    //     { name: "Rexburg Rapids", longitude: -111.785234, latitude: 43.831761 }
 
-    ];
+    // ];
 
-    // Loop through your places of interest and add text labels
-    placesOfInterest.forEach(place => {
-        const point = new Point({
-            longitude: place.longitude,
-            latitude: place.latitude,
-            spatialReference: SpatialReference.WGS84
-        });
+    // // Loop through your places of interest and add text labels
+    // placesOfInterest.forEach(place => {
+    //     const point = new Point({
+    //         longitude: place.longitude,
+    //         latitude: place.latitude,
+    //         spatialReference: SpatialReference.WGS84
+    //     });
 
-        const textSymbol = new TextSymbol({
-            text: place.name,
-            font: {
-                size: 12,
-                weight: "bold"
-            },
-            color: "black"
-        });
+    //     const textSymbol = new TextSymbol({
+    //         text: place.name,
+    //         font: {
+    //             size: 12,
+    //             weight: "bold"
+    //         },
+    //         color: "black",
+    //         haloSize: 2, // Add a halo (outline) around the text
+    //         haloColor: "red" // Set the halo color
+    //     });
 
-        const graphic = new Graphic({
-            geometry: point,
-            symbol: textSymbol
-        });
+    //     const graphic = new Graphic({
+    //         geometry: point,
+    //         symbol: textSymbol
+    //     });
 
-        view.graphics.add(graphic);
-    });
+    //     view.graphics.add(graphic);
+    // });
 
-    const basemapGallery = new BasemapGallery({
-        view: view
-    });
+    // const basemapGallery = new BasemapGallery({
+    //     view: view
+    // });
 
     // Uncomment the code below to add the BasemapGallery widget
     // view.ui.add(basemapGallery, {
