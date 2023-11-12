@@ -60,12 +60,11 @@ require([
         { name: "Madison Armory", longitude: -111.777996, latitude: 43.838736, description: "Get your guns, ammo, and firearm accessories here."},
         { name: "My Dad's House", longitude: -111.801011, latitude: 43.806653, description: "Its my dad's place. Awesome Peruvian food and great company with my dad, Mita, Flor, and Franzue." }
     ];
-
-    //43.821647, 
+ 
     const graphicsLayer = new GraphicsLayer();
 
 
-    const popupTemplate = new PopupTemplate({
+    const popupTemplate = new PopupTemplate({//This is the popup tenplate provided by ArcGIS and will display the name and description
         title: "{name}",
         content: [
             {
@@ -75,7 +74,7 @@ require([
         ]
     });
 
-    placesOfInterest.forEach(place => {
+    placesOfInterest.forEach(place => {//Goes through and creates a label for each of the places of interest
         const textSymbol = new TextSymbol({
             color: "black",
             haloColor: "red",
@@ -88,13 +87,13 @@ require([
             }
         });
 
-        const point = new Point({
+        const point = new Point({ //sets the point with longitude and latitude from the places of interests above
             longitude: place.longitude,
             latitude: place.latitude,
             spatialReference: SpatialReference.WGS84
         });
 
-        const graphic = new Graphic({
+        const graphic = new Graphic({//Kept simple and only used a text word for each location
             geometry: point,
             symbol: textSymbol,
             attributes: place,
